@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import CustomList from "./CustomList";
 import CustomCard from "./CustomCard";
 
 export const MovieList = ({ movieList, deleteMovie }) => {
   const [displayList, setDisplayList] = useState([]);
+  const [view, setView] = useState("grid");
   //  Introduction to use Effect so that we get movieList befroe re-rendering otherwise it is slow and we won't get movieList value
   useEffect(() => {
     setDisplayList(movieList);
@@ -38,8 +40,12 @@ export const MovieList = ({ movieList, deleteMovie }) => {
             </Button>
           </ButtonGroup>
           <ButtonGroup aria-label="Basic example">
-            <Button variant="secondary">Grid</Button>
-            <Button variant="secondary">List</Button>
+            <Button variant="secondary" onClick={() => setView("grid")}>
+              Grid
+            </Button>
+            <Button variant="secondary" onClick={() => setView("list")}>
+              List
+            </Button>
           </ButtonGroup>
         </Col>
       </Row>
@@ -48,8 +54,10 @@ export const MovieList = ({ movieList, deleteMovie }) => {
       <Row className="mt-5">
         <Col className="d-flex justify-content-between flex-wrap">
           {displayList.map((item, i) => {
-            return (
+            return view === "grid" ? (
               <CustomCard key={i} movie={item} deleteMovie={deleteMovie} />
+            ) : (
+              <CustomList key={i} movie={item} deleteMovie={deleteMovie} />
             );
           })}
         </Col>
