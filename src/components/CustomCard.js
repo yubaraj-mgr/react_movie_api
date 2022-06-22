@@ -6,7 +6,7 @@ const CustomCard = ({ movie = {}, movieSelect, inSearchForm, deleteMovie }) => {
   const { Title, Poster, imdbRating } = movie;
 
   return (
-    <Card style={{ width: "18rem" }} className="h-100">
+    <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={movie.Poster} className="h-100" />
       <Card.Body>
         <Card.Title>{Title}</Card.Title>

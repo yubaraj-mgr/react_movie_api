@@ -8,7 +8,7 @@ const CustomList = ({ movie = {}, movieSelect, inSearchForm, deleteMovie }) => {
   return (
     <Card
       style={{ width: "100%" }}
-      className="mt-3 d-flex flex-row justify-content-between h-100"
+      className="mt-3 d-flex flex-row justify-content-between"
     >
       <div style={{ width: "200px" }}>
         <Card.Img variant="top" src={Poster} className="h-100" />
